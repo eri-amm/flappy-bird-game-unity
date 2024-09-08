@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9218504525e4c464085045147b291b64
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - red: {fileID: 21300000, guid: 295aa501553139446b6e7cc4cf912e10, type: 3}
+  - gold: {fileID: 21300000, guid: 1ea94a1dba27a0a468a2163758fd06ed, type: 3}
+  - sky: {fileID: 21300000, guid: 71f6b0f5da158044b90d6224d63bc387, type: 3}
+  - skin: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
