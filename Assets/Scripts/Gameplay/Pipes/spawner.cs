@@ -7,6 +7,7 @@ public class spawner : MonoBehaviour
 
     public GameObject pipe;
     public float spawn_rate=2;
+    public flappy_behaviour status;
     public float timer = 0;
     public float highest = 5.0f;
     public float lowest = -2.5f;
@@ -20,20 +21,26 @@ public class spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawn();
+        if (status.flappy_rigid.gravityScale != 0)
+        {
+            spawn();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer < spawn_rate)
-            timer = timer + Time.deltaTime;
-
-        else
+        if (status.flappy_rigid.gravityScale != 0)
         {
-            spawn();
-            timer = 0;
-        }
+            if (timer < spawn_rate)
+                timer = timer + Time.deltaTime;
 
+            else
+            {
+                spawn();
+                timer = 0;
+            }
+        }
+        
     }
 }
