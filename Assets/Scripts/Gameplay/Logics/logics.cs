@@ -33,6 +33,7 @@ public class logics : MonoBehaviour
         startMenu.SetActive(false);
         gameplay.SetActive(true);
         scoreTx.SetActive(true);
+        flappy.transform.position = new Vector2(flappy.transform.position.x, 1.17f);
     }
     public void pause()
     {
