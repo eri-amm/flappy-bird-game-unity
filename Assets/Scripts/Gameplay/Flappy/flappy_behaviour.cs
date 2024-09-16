@@ -22,7 +22,7 @@ public class flappy_behaviour : MonoBehaviour
     void Start()
     {
         flappy_rigid.gravityScale = 0;
-        if (PlayerPrefs.GetInt("SkinNum") == 1)
+        if (PlayerPrefs.GetInt("SkinNum") == 0)
         {
             Animator.Play("Gold_fly");
             Animator.Update(0);
@@ -32,10 +32,15 @@ public class flappy_behaviour : MonoBehaviour
             Animator.Play("Red_fly");
             Animator.Update(0);
         }
+        else if(PlayerPrefs.GetInt("SkinNum") == 1)
+        {
+            Animator.Play("Sky_fly");
+            Animator.Update(0);
+        }
         logic_script = GameObject.FindGameObjectWithTag("logic").GetComponent<logics>();
         flap.volume = PlayerPrefs.GetInt("FlappyVol");
         die.volume = PlayerPrefs.GetInt("FlappyVol");
-        flap.volume = PlayerPrefs.GetInt("FlappyVol");
+        swoosh.volume = PlayerPrefs.GetInt("FlappyVol");
         flappy_Alive =true;
         flappy_rigid.gravityScale = 0;
     }
@@ -43,7 +48,6 @@ public class flappy_behaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
          if (flappy_Alive&&fly)
         {
                

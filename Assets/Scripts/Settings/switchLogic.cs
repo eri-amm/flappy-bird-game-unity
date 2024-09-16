@@ -22,7 +22,8 @@ public class switchLogic : MonoBehaviour
             MusicB.image.overrideSprite = offIcon;
             iconNumM = 0;
         }
-        //actual setting appliance
+        PlayerPrefs.SetInt("MusicVol", iconNumM);
+        
     }
 
     public void flappyB()
@@ -39,7 +40,8 @@ public class switchLogic : MonoBehaviour
             FlappyB.image.overrideSprite = offIcon;
             iconNumF = 0;
         }
-        //actual setting appliance
+        PlayerPrefs.SetInt("FlappyVol", iconNumF);
+       
     }
 
     public void pointsB()
@@ -56,7 +58,7 @@ public class switchLogic : MonoBehaviour
             PointsB.image.overrideSprite = offIcon;
             iconNumP = 0;
         }
-        //actual setting appliance
+        PlayerPrefs.SetInt("PointsVol", iconNumP);
     }
     public Sprite GetSwitch(int curr_state)
     {

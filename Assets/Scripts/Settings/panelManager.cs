@@ -10,11 +10,19 @@ public class panelManager : MonoBehaviour
 {
     //all of these things should be done when the game boots up and the actual settings are also getting applied
     public GameObject AudioP, CycleP, SkinP;
+    public scene_managerr scene_Managerr;
     public SkinCHN skinScr;
     public switchLogic switchLogic;
     public sceneryManager sceneryManager;
+
+    public void Start()
+    {
+        skinP();
+    }
+
     public void skinP()
     {
+
         AudioP.SetActive(false);
         CycleP.SetActive(false);
 
@@ -49,7 +57,7 @@ public class panelManager : MonoBehaviour
 
         CycleP.SetActive(true);
 
-        GameObject.FindGameObjectWithTag("UIimage").GetComponent<Image>().overrideSprite = sceneryManager.GetScenery(PlayerPrefs.GetInt("SceneryNum"));
+        GameObject.FindGameObjectWithTag("UIimage").GetComponent<MeshRenderer>().material = sceneryManager.GetSkyScenery(PlayerPrefs.GetInt("SceneryNum"));
         sceneryManager.sceneryNum = Convert.ToInt16 (PlayerPrefs.GetInt("SceneryNum"));
 
     }

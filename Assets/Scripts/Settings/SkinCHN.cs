@@ -21,6 +21,7 @@ public class SkinCHN : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("UIimage").GetComponent<Image>().overrideSprite=skins[skinNum];
         skinName.text = GetSkinName(skinNum);
+        PlayerPrefs.SetInt("SkinNum", skinNum);
     }
     public void left ()
     {
@@ -31,6 +32,7 @@ public class SkinCHN : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("UIimage").GetComponent<Image>().overrideSprite = skins[skinNum];
         skinName.text = GetSkinName(skinNum);
+        PlayerPrefs.SetInt("SkinNum", skinNum);
     }
     public Sprite GetSkin(int curr_skin)
     {

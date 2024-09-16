@@ -8,12 +8,14 @@ using UnityEngine.UI;
 public class logics : MonoBehaviour
 {
     public int score=0;
+    public sceneryManager sceneryManager;
+    public MeshRenderer sky,ground;
     public Text scoreT,highScore,boardScore,boardHigh;
     public AudioSource point,ost;
     public Button pauseB;
     public Image medal;
     public Sprite pauseS, playS,bronze,silver,gold,plat;
-    public GameObject gameOvers,startMenu,gameplay,scoreTx,newHigh,Medal,flappy;
+    public GameObject gameOvers,startMenu,gameplay,scoreTx,newHigh,Medal,flappy,endB;
 
     void Start()
     {
@@ -21,6 +23,11 @@ public class logics : MonoBehaviour
         ost.volume = PlayerPrefs.GetInt("MusicVol");
         ost.Play();
         highScore.text = Convert.ToString(PlayerPrefs.GetInt("HighScore"));
+        sky.material = sceneryManager.GetSkyScenery(PlayerPrefs.GetInt("SceneryNum"));
+        sky.transform.localScale = sceneryManager.getSkySize(PlayerPrefs.GetInt("SceneryNum"));
+        sky.transform.localPosition = sceneryManager.getSkyPos(PlayerPrefs.GetInt("SceneryNum"));
+        ground.material = sceneryManager.getGroundMat(PlayerPrefs.GetInt("SceneryNum"));
+        ground.transform.localScale = sceneryManager.getGroundSize(PlayerPrefs.GetInt("SceneryNum"));
     }
     public void inc_scr()
     {
@@ -34,6 +41,7 @@ public class logics : MonoBehaviour
         gameplay.SetActive(true);
         scoreTx.SetActive(true);
         flappy.transform.position = new Vector2(flappy.transform.position.x, 1.17f);
+        flappy.transform.localScale = new Vector3(9,9,1);
     }
     public void pause()
     {
@@ -49,6 +57,7 @@ public class logics : MonoBehaviour
             Time.timeScale = 1;
             pauseB.image.overrideSprite = pauseS;
         }
+        endB.SetActive(true);
     }
 
     

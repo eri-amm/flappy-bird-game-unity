@@ -13,9 +13,7 @@ public class spawner : MonoBehaviour
     public float lowest = -2.5f;
     void spawn()
     {
-        
         Instantiate(pipe, new Vector3(transform.position.x,Random.Range(lowest,highest),0), transform.rotation);
-        
     }
     
     // Start is called before the first frame update
