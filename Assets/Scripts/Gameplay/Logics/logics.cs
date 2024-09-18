@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class logics : MonoBehaviour
     public int score=0;
     public sceneryManager sceneryManager;
     public MeshRenderer sky,ground;
-    public Text scoreT,highScore,boardScore,boardHigh;
+    public TextMeshProUGUI scoreT,highScore,boardScore,boardHigh;
     public AudioSource point,ost;
     public Button pauseB;
     public Image medal;
@@ -40,7 +41,7 @@ public class logics : MonoBehaviour
         startMenu.SetActive(false);
         gameplay.SetActive(true);
         scoreTx.SetActive(true);
-        flappy.transform.position = new Vector2(flappy.transform.position.x, 1.17f);
+        flappy.transform.position = new Vector2(-6.29f, 1.17f);
         flappy.transform.localScale = new Vector3(9,9,1);
     }
     public void pause()
@@ -86,22 +87,22 @@ public class logics : MonoBehaviour
         if (score >= 10&&score<20)
         {
             medal.overrideSprite = bronze;
-            medal.rectTransform.sizeDelta = new Vector2(383.4f, 341.6f);
+            medal.rectTransform.sizeDelta = new Vector2(336.6f, 287.2f);
         }
         else if (score >= 20 && score < 30)
         {
             medal.overrideSprite = silver;
-            medal.rectTransform.sizeDelta = new Vector2(359.3f, 317.1f);
+            medal.rectTransform.sizeDelta = new Vector2(312.4f, 267f);
         }
         else if (score >= 1 && score < 40)
         {
             medal.overrideSprite = gold;
-            medal.rectTransform.sizeDelta = new Vector2(366.1f, 326.1f);
+            medal.rectTransform.sizeDelta = new Vector2(322.5f, 271.3f);
         }
         else if (score > 40)
         {
             medal.overrideSprite = plat;
-            medal.rectTransform.sizeDelta = new Vector2(350.9f, 338.5f);
+            medal.rectTransform.sizeDelta = new Vector2(298.3f, 271.3f);
         }
     }
 }

@@ -2,18 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class panelManager : MonoBehaviour
 {
-    //all of these things should be done when the game boots up and the actual settings are also getting applied
+    
     public GameObject AudioP, CycleP, SkinP;
     public scene_managerr scene_Managerr;
     public SkinCHN skinScr;
     public switchLogic switchLogic;
     public sceneryManager sceneryManager;
+    public Image skinF, cycleF, audioF;
 
     public void Start()
     {
@@ -26,8 +26,12 @@ public class panelManager : MonoBehaviour
         AudioP.SetActive(false);
         CycleP.SetActive(false);
 
+        audioF.color = new Color(0, 1, 0.9843137f);
+        cycleF.color = new Color(0, 1, 0.9843137f);
+
         SkinP.SetActive(true);
 
+        skinF.color = new Color(0,1, 0.07569122f);
         GameObject.FindGameObjectWithTag("UIimage").GetComponent<Image>().overrideSprite = skinScr.GetSkin(PlayerPrefs.GetInt("SkinNum"));
         skinScr.skinNum = PlayerPrefs.GetInt("SkinNum");
         skinScr.skinName.text = skinScr.GetSkinName(PlayerPrefs.GetInt("SkinNum"));
@@ -38,9 +42,13 @@ public class panelManager : MonoBehaviour
 
         SkinP.SetActive(false);
         CycleP.SetActive(false);
+        skinF.color = new Color(0, 1, 0.9843137f);
+        cycleF.color = new Color(0, 1, 0.9843137f);
 
         AudioP.SetActive(true);
-        
+
+        audioF.color = new Color(0, 1, 0.07569122f);
+
         switchLogic.FlappyB.image.overrideSprite= switchLogic.GetSwitch(PlayerPrefs.GetInt("FlappyVol"));
         switchLogic.iconNumF = PlayerPrefs.GetInt("FlappyVol");
 
@@ -55,8 +63,12 @@ public class panelManager : MonoBehaviour
         AudioP.SetActive(false);
         SkinP.SetActive(false);
 
+        skinF.color = new Color(0, 1, 0.9843137f);
+        audioF.color = new Color(0, 1, 0.9843137f);
+
         CycleP.SetActive(true);
 
+        cycleF.color = new Color(0, 1, 0.07569122f);
         GameObject.FindGameObjectWithTag("UIimage").GetComponent<MeshRenderer>().material = sceneryManager.GetSkyScenery(PlayerPrefs.GetInt("SceneryNum"));
         sceneryManager.sceneryNum = Convert.ToInt16 (PlayerPrefs.GetInt("SceneryNum"));
 

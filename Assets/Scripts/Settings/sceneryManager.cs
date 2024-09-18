@@ -39,7 +39,7 @@ public class sceneryManager : MonoBehaviour
     {
         if (curr_scenery == 3)
         {
-            return new Vector3(79.14f, 43.56f, 1);
+            return new Vector3(79.14f, 41f, 1);
         }
            
         else if (curr_scenery == 1)
@@ -54,7 +54,7 @@ public class sceneryManager : MonoBehaviour
 
         else
         {
-            return new Vector3(94.01f, 40.76f, 1);
+            return new Vector3(94.01f, 42.82f, 1);
         }
     }
 
@@ -62,7 +62,7 @@ public class sceneryManager : MonoBehaviour
     {
         if (curr_scenery == 3)
         {
-            return new Vector3(-1.22f, 3.4f, 3.17f);
+            return new Vector3(-1.22f, 4f, 4f);
         }
            
         else if (curr_scenery == 1)
@@ -77,7 +77,7 @@ public class sceneryManager : MonoBehaviour
 
         else
         {
-            return new Vector3(24.5f, 3.4f, 3.17f);
+            return new Vector3(24.5f, 3.4f, 3.6f);
         }
     }
 
