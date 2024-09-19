@@ -16,7 +16,7 @@ public class logics : MonoBehaviour
     public Button pauseB;
     public Image medal;
     public Sprite pauseS, playS,bronze,silver,gold,plat;
-    public GameObject gameOvers,startMenu,gameplay,scoreTx,newHigh,Medal,flappy,endB;
+    public GameObject gameOvers,startMenu,gameplay,scoreTx,newHigh,Medal,flappy,endB, jumpB;
 
     void Start()
     {
@@ -41,8 +41,8 @@ public class logics : MonoBehaviour
         startMenu.SetActive(false);
         gameplay.SetActive(true);
         scoreTx.SetActive(true);
-        flappy.transform.position = new Vector2(-6.29f, 1.17f);
-        flappy.transform.localScale = new Vector3(9,9,1);
+        flappy.transform.position = new Vector2(-10.42f, 1.17f);
+        flappy.transform.localScale = new Vector3(12.3f,12.8f,1);
     }
     public void pause()
     {
@@ -51,14 +51,19 @@ public class logics : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseB.image.overrideSprite = playS;
-            
+            jumpB.SetActive(false);
+            endB.SetActive(true);
+
         }
         else
         {
             Time.timeScale = 1;
             pauseB.image.overrideSprite = pauseS;
+            jumpB.SetActive(true);
+            endB.SetActive(false);
         }
-        endB.SetActive(true);
+        
+        
     }
 
     

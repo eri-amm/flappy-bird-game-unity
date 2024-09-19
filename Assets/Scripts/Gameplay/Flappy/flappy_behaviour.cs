@@ -13,14 +13,17 @@ public class flappy_behaviour : MonoBehaviour
     public float flap_strength;
     public logics logic_script;
     public Animator Animator;
-    public bool fly;
+    public bool isStill;
+    public GameObject readyIMG;
+    public bool isFlying;
     public Sprite flappy;
     public AudioSource flap,die,swoosh;
-    public bool flappy_Alive;
+    public bool isAlive;
 
     // Start is called before the first frame update
     void Start()
     {
+        isStill=true;
         flappy_rigid.gravityScale = 0;
         if (PlayerPrefs.GetInt("SkinNum") == 0)
         {
@@ -41,19 +44,19 @@ public class flappy_behaviour : MonoBehaviour
         flap.volume = PlayerPrefs.GetInt("FlappyVol");
         die.volume = PlayerPrefs.GetInt("FlappyVol");
         swoosh.volume = PlayerPrefs.GetInt("FlappyVol");
-        flappy_Alive =true;
+        isAlive =true;
         flappy_rigid.gravityScale = 0;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-         if (flappy_Alive&&fly)
+         if (isAlive&&isFlying)
         {
                
             if (flappy_rigid.gravityScale == 0)
             {
-                flappy_rigid.gravityScale = 4.5f;
+                flappy_rigid.gravityScale = 9.5f;
             }
 
             flap.Play();
@@ -62,13 +65,13 @@ public class flappy_behaviour : MonoBehaviour
 
             flappy_rigid.velocity = (Vector2.up * flap_strength) * Time.fixedDeltaTime;
 
-             if (flappy_render.transform.rotation.z != 20f)
+             if (!Animator.GetBool("up"))
             {
                 Animator.SetBool("up",true);
             }
-            fly = false;
+            isFlying = false;
         }
-        if (flappy_rigid.velocity.y < -21)
+        if (flappy_rigid.velocity.y < -19)
         {
             swoosh.Play();
             Animator.SetBool("up", false);
@@ -77,7 +80,7 @@ public class flappy_behaviour : MonoBehaviour
             
         if (transform.position.y < -15)
         {
-            flappy_Alive = false;
+            isAlive = false;
             die.Play();
             logic_script.gameOver();
         }
@@ -85,12 +88,17 @@ public class flappy_behaviour : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         die.Play();
-        flappy_Alive=false;
+        isAlive=false;
         logic_script.gameOver();
         Time.timeScale = 0;
     }
     public void flying()
     {
-        fly=true;
+        isFlying=true;
+        if (isStill)
+        {
+            readyIMG.SetActive(false);
+            isStill = false;
+        }
     }
 }

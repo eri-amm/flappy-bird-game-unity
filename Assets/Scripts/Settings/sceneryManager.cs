@@ -39,22 +39,22 @@ public class sceneryManager : MonoBehaviour
     {
         if (curr_scenery == 3)
         {
-            return new Vector3(79.14f, 41f, 1);
+            return new Vector3(111.48f, 57.81f, 1);
         }
            
         else if (curr_scenery == 1)
         {
-            return new Vector3(30.09f, 55f, 1);
+            return new Vector3(36.03f, 71.86f, 1);
         }
 
         else if (curr_scenery == 0)
         {
-            return new Vector3(30.09f, 44.1f, 1);
+            return new Vector3(40.55f, 56.9f, 1);
         }
 
         else
         {
-            return new Vector3(94.01f, 42.82f, 1);
+            return new Vector3(124.92f, 58.462f, 1);
         }
     }
 
@@ -62,22 +62,22 @@ public class sceneryManager : MonoBehaviour
     {
         if (curr_scenery == 3)
         {
-            return new Vector3(-1.22f, 4f, 4f);
+            return new Vector3(0.91f, 6.72f, 4f);
         }
            
         else if (curr_scenery == 1)
         {
-            return new Vector3(-1.22f, -1.09f, 3.17f);
+            return new Vector3(-1.45f, -0.77f, 3.17f);
         }
 
         else if (curr_scenery == 0)
         {
-            return new Vector3(-1.22f, 4.89f, 3.17f);
+            return new Vector3(-0.76f, 6.35f, 3.17f);
         }
 
         else
         {
-            return new Vector3(24.5f, 3.4f, 3.6f);
+            return new Vector3(9.04f, 5.62f, 3.6f);
         }
     }
 
@@ -90,11 +90,14 @@ public class sceneryManager : MonoBehaviour
     {
         if (curr_scenery == 0 || curr_scenery == 1)
         {
-            return new Vector3(41.06f, 9.373557f,1);
+            return new Vector3(41.06f, 10.66f, 1);
         }
-        else  
+        else if (curr_scenery == 2)
         {
-           return new Vector3(74.43f,9.373557f,1);
+            return new Vector3(74.43f, 10.3f, 1);
+        }
+        else {
+            return new Vector3(74.43f, 11.05f, 1);
         }
     }
 }

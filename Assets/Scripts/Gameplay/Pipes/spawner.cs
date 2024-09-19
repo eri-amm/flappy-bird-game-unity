@@ -6,7 +6,7 @@ public class spawner : MonoBehaviour
 {
 
     public GameObject pipe;
-    public float spawn_rate=4;
+    public float spawn_rate=5;
     public flappy_behaviour status;
     public float timer = 0;
     public float highest = 5.0f;
