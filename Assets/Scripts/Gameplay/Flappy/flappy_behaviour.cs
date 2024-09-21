@@ -71,7 +71,7 @@ public class flappy_behaviour : MonoBehaviour
             }
             isFlying = false;
         }
-        if (flappy_rigid.velocity.y < -19)
+        if (flappy_rigid.velocity.y < -20)
         {
             swoosh.Play();
             Animator.SetBool("up", false);

@@ -7,13 +7,6 @@ public class pipe_behaviour : MonoBehaviour
     public float moving_speed;
     public GameObject pipe;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

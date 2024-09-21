@@ -62,11 +62,8 @@ public class logics : MonoBehaviour
             jumpB.SetActive(true);
             endB.SetActive(false);
         }
-        
-        
     }
 
-    
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -84,12 +81,13 @@ public class logics : MonoBehaviour
         gameOvers.SetActive(true);
         gameplay.SetActive(false);
         scoreTx.SetActive(false );
+
         if (score >= 10)
         {
-            Medal.SetActive(true );    
+            Medal.SetActive(true);    
         }
 
-        if (score >= 10&&score<20)
+        if (score >= 10 && score < 20) 
         {
             medal.overrideSprite = bronze;
             medal.rectTransform.sizeDelta = new Vector2(336.6f, 287.2f);
@@ -99,7 +97,7 @@ public class logics : MonoBehaviour
             medal.overrideSprite = silver;
             medal.rectTransform.sizeDelta = new Vector2(312.4f, 267f);
         }
-        else if (score >= 1 && score < 40)
+        else if (score >= 30 && score < 40)
         {
             medal.overrideSprite = gold;
             medal.rectTransform.sizeDelta = new Vector2(322.5f, 271.3f);
