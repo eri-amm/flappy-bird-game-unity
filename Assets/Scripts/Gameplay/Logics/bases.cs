@@ -7,14 +7,14 @@ public class bases : MonoBehaviour
 {
     public float speed;
     public GameObject shadowPanel;
+    public Material shadow;
+    public MeshRenderer shadowRenderer;
+    public Color color;
     Vector2 offset;
 
-     void Start()
+    void Start()
     {
-        if (PlayerPrefs.GetInt("SceneryNum") == 1)
-        {
-            shadowPanel.SetActive(true);
-        }
+        
     }
 
     // Update is called once per frame
@@ -22,5 +22,6 @@ public class bases : MonoBehaviour
     {
         offset = new Vector2(Time.time * speed,0);
         GetComponent<Renderer>().material.mainTextureOffset = offset;
+        shadow.color = color;
     }
 }

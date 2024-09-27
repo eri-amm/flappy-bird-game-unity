@@ -51,7 +51,7 @@ public class SkinCHN : MonoBehaviour
 
         else
         {
-            return "Red";
+            return "Ruby";
         }
 
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,13 +15,12 @@ public class flappy_behaviour : MonoBehaviour
     public logics logic_script;
     public Animator Animator;
     public bool isStill;
-    public GameObject readyIMG;
+    public GameObject readyIMG,flappyObj;
     public bool isFlying;
-    public Sprite flappy;
+    public Sprite flappy,bluedeath;
     public AudioSource flap,die,swoosh;
     public bool isAlive;
 
-    // Start is called before the first frame update
     void Start()
     {
         isStill=true;
@@ -48,49 +48,42 @@ public class flappy_behaviour : MonoBehaviour
         flappy_rigid.gravityScale = 0;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-         if (isAlive&&isFlying)
+        if (isAlive&&isFlying)
         {
                
-            if (flappy_rigid.gravityScale == 0)
-            {
-                flappy_rigid.gravityScale = 9.5f;
-            }
+           if (flappy_rigid.gravityScale == 0)
+           {
+              flappy_rigid.gravityScale = 9.9f;
+           }
 
-            flap.Play();
+           flap.Play();
             
-            Animator.SetBool("fall", false);
+           Animator.SetBool("fall", false);
 
-            flappy_rigid.velocity = (Vector2.up * flap_strength) * Time.fixedDeltaTime;
+           flappy_rigid.velocity = (Vector2.up * flap_strength) * Time.fixedDeltaTime;
 
-             if (!Animator.GetBool("up"))
-            {
-                Animator.SetBool("up",true);
-            }
-            isFlying = false;
+           if (!Animator.GetBool("up"))
+           {
+              Animator.SetBool("up",true);
+           }
+           isFlying = false;
         }
-        if (flappy_rigid.velocity.y < -20)
+        
+        if (flappy_rigid.velocity.y < -28)
         {
             swoosh.Play();
             Animator.SetBool("up", false);
             Animator.SetBool("fall", true);
         }
-            
-        if (transform.position.y < -15)
-        {
-            isAlive = false;
-            die.Play();
-            logic_script.gameOver();
-        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        die.Play();
-        isAlive=false;
-        logic_script.gameOver();
+        isAlive = false;
         Time.timeScale = 0;
+        die.Play();
+        logic_script.gameOver();
     }
     public void flying()
     {

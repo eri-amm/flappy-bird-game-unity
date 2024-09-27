@@ -8,6 +8,7 @@ public class switchLogic : MonoBehaviour
     public Sprite offIcon,onIcon;
     public int iconNumM, iconNumF, iconNumP;
     public Button MusicB,FlappyB,PointsB;
+    public ostmanager ostmanager;
     public void musicB()
     {
 
@@ -15,6 +16,8 @@ public class switchLogic : MonoBehaviour
         {
             MusicB.image.overrideSprite = onIcon;
             iconNumM = 1;
+            ostmanager.play();
+
         }
 
         else if (iconNumM == 1)
