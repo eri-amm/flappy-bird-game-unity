@@ -2653,7 +2653,7 @@ MonoBehaviour:
   flappy_render: {fileID: 1144576478}
   flappy_rigid: {fileID: 1144576480}
   status: {fileID: 1342384259}
-  flap_strength: 1857
+  flap_strength: 1826
   logic_script: {fileID: 0}
   Animator: {fileID: 1144576484}
   isStill: 0
