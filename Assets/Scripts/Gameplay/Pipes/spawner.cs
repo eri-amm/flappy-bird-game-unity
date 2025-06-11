@@ -6,10 +6,13 @@ public class spawner : MonoBehaviour
 {
 
     public GameObject pipe,spawnedPipe;
+    public logics logics;
     public float spawn_rate=5;
+    public float score = 0;
     public flappy_behaviour status;
     public float lastY=0;
     public float timer = 0;
+    public bool changedSpeed = false;
     public float highest = 5.0f;
     public float lowest = -2.5f;
     void spawn()
@@ -30,7 +33,17 @@ public class spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if ( (logics.score != 0) && (logics.score % 3 == 0) && (spawn_rate > 0.5) && !changedSpeed) 
+        //{
+        //    spawn_rate -= 0.2f;
+        //    changedSpeed = true;
+        //}
+        //if (logics.score % 3 != 0)
+        //{
+        //    changedSpeed = false;
+        //}
         lastY = spawnedPipe.transform.position.y;
+
         if (lastY >= 1)
         {
             lastY = Random.Range(-4,-3);

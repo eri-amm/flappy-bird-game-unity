@@ -42,8 +42,18 @@ public class flappy_behaviour : MonoBehaviour
         }
         logic_script = GameObject.FindGameObjectWithTag("logic").GetComponent<logics>();
         flap.volume = PlayerPrefs.GetInt("FlappyVol");
-        die.volume = PlayerPrefs.GetInt("FlappyVol");
+        
         swoosh.volume = PlayerPrefs.GetInt("FlappyVol");
+
+        if (swoosh.volume == 1)
+        {
+            swoosh.volume = 0.3f;
+        }
+        if (flap.volume == 1)
+        {
+            flap.volume = 0.3f;
+        }
+        
         isAlive =true;
         flappy_rigid.gravityScale = 0;
     }
@@ -71,7 +81,7 @@ public class flappy_behaviour : MonoBehaviour
            isFlying = false;
         }
         
-        if (flappy_rigid.velocity.y < -28)
+        if (flappy_rigid.velocity.y < -28 && Animator.GetBool("up") == true)
         {
             swoosh.Play();
             Animator.SetBool("up", false);
@@ -82,7 +92,6 @@ public class flappy_behaviour : MonoBehaviour
     {
         isAlive = false;
         Time.timeScale = 0;
-        die.Play();
         logic_script.gameOver();
     }
     public void flying()

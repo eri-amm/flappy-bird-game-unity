@@ -13,7 +13,7 @@ public class logics : MonoBehaviour
     public sceneryManager sceneryManager;
     public MeshRenderer sky,ground;
     public TextMeshProUGUI scoreT,highScore,boardScore,boardHigh;
-    public AudioSource point;
+    public AudioSource point,die;
     public Button pauseB;
     public Image medal,flashIMG;
     public Sprite pauseS, playS,bronze,silver,gold,plat;
@@ -24,6 +24,11 @@ public class logics : MonoBehaviour
         point.volume = PlayerPrefs.GetInt("PointsVol");
         Application.targetFrameRate = 120;
         flash.SetActive(false);
+        die.volume = PlayerPrefs.GetInt("FlappyVol");
+        if (die.volume == 1)
+        {
+            die.volume = 0.3f;
+        }
         highScore.text = Convert.ToString(PlayerPrefs.GetInt("HighScore"));
         sky.material = sceneryManager.GetSkyScenery(PlayerPrefs.GetInt("SceneryNum"));
         sky.transform.localScale = sceneryManager.getSkySize(PlayerPrefs.GetInt("SceneryNum"));
@@ -95,7 +100,7 @@ public class logics : MonoBehaviour
     public void gameOver()
     {
         flash.SetActive(true);
-
+        die.Play();
         if (score > PlayerPrefs.GetInt("HighScore"))
         {
             PlayerPrefs.SetInt("HighScore", score);
