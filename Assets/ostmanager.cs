@@ -23,16 +23,17 @@ public class ostmanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instance.ost.volume = PlayerPrefs.GetInt("MusicVol");
+        instance.ost.volume = PlayerPrefs.GetFloat("MusicVol");
         ost.Play();
     }
 
     void Update()
     {
-        instance.ost.volume = PlayerPrefs.GetInt("MusicVol");
+        instance.ost.volume = PlayerPrefs.GetFloat("MusicVol");
     }
     public void play()
     {
+        instance.ost.volume= PlayerPrefs.GetFloat("MusicVol");
         instance.ost.Play();
     }
 }

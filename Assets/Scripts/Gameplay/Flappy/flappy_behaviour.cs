@@ -41,18 +41,10 @@ public class flappy_behaviour : MonoBehaviour
             Animator.Update(0);
         }
         logic_script = GameObject.FindGameObjectWithTag("logic").GetComponent<logics>();
-        flap.volume = PlayerPrefs.GetInt("FlappyVol");
+        flap.volume = PlayerPrefs.GetFloat("FlappyVol");
         
-        swoosh.volume = PlayerPrefs.GetInt("FlappyVol");
+        swoosh.volume = PlayerPrefs.GetFloat("FlappyVol");
 
-        if (swoosh.volume == 1)
-        {
-            swoosh.volume = 0.3f;
-        }
-        if (flap.volume == 1)
-        {
-            flap.volume = 0.3f;
-        }
         
         isAlive =true;
         flappy_rigid.gravityScale = 0;

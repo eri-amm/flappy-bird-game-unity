@@ -6,66 +6,66 @@ using UnityEngine.UI;
 public class switchLogic : MonoBehaviour
 {
     public Sprite offIcon,onIcon;
-    public int iconNumM, iconNumF, iconNumP;
+    public float iconNumM, iconNumF, iconNumP;
     public Button MusicB,FlappyB,PointsB;
     public ostmanager ostmanager;
     public void musicB()
     {
 
-        if (iconNumM == 0)
+        if (iconNumM < 0.1f)
         {
             MusicB.image.overrideSprite = onIcon;
-            iconNumM = 1;
+            iconNumM = 0.2f;
+            PlayerPrefs.SetFloat("MusicVol", iconNumM);
             ostmanager.play();
-
         }
 
-        else if (iconNumM == 1)
+        else
         {
             MusicB.image.overrideSprite = offIcon;
-            iconNumM = 0;
+            iconNumM = 0f;
+            PlayerPrefs.SetFloat("MusicVol", iconNumM);
         }
-        PlayerPrefs.SetInt("MusicVol", iconNumM);
         
     }
 
     public void flappyB()
     {
 
-        if (iconNumF == 0)
+        if (iconNumF < 0.1f)
         {
             FlappyB.image.overrideSprite = onIcon;
-            iconNumF = 1;
+            iconNumF = 0.2f;
         }
 
-        else if (iconNumF == 1)
+        else
         {
             FlappyB.image.overrideSprite = offIcon;
-            iconNumF = 0;
+            iconNumF = 0f;
         }
-        PlayerPrefs.SetInt("FlappyVol", iconNumF);
-       
+        PlayerPrefs.SetFloat("FlappyVol", iconNumF);
+
     }
 
     public void pointsB()
     {
 
-        if (iconNumP == 0)
+        if (iconNumP < 0.0001f)
         {
             PointsB.image.overrideSprite = onIcon;
-            iconNumP = 1;
+            iconNumP = 0.1f;
         }
 
-        else if (iconNumP == 1)
+        else
         {
             PointsB.image.overrideSprite = offIcon;
-            iconNumP = 0;
+            iconNumP = 0f;
         }
-        PlayerPrefs.SetInt("PointsVol", iconNumP);
+        PlayerPrefs.SetFloat("PointsVol", iconNumP);
     }
-    public Sprite GetSwitch(int curr_state)
+    public Sprite GetSwitch(float curr_state)
     {
-        if (curr_state == 0)
+        if (curr_state <0.1f)
         {
             return offIcon;
         }

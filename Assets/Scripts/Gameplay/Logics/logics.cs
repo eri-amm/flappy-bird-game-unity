@@ -21,14 +21,10 @@ public class logics : MonoBehaviour
 
     void Start()
     {
-        point.volume = PlayerPrefs.GetInt("PointsVol");
+        point.volume = PlayerPrefs.GetFloat("PointsVol");
         Application.targetFrameRate = 120;
         flash.SetActive(false);
-        die.volume = PlayerPrefs.GetInt("FlappyVol");
-        if (die.volume == 1)
-        {
-            die.volume = 0.3f;
-        }
+        die.volume = PlayerPrefs.GetFloat("FlappyVol");
         highScore.text = Convert.ToString(PlayerPrefs.GetInt("HighScore"));
         sky.material = sceneryManager.GetSkyScenery(PlayerPrefs.GetInt("SceneryNum"));
         sky.transform.localScale = sceneryManager.getSkySize(PlayerPrefs.GetInt("SceneryNum"));

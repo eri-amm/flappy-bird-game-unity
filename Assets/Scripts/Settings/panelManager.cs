@@ -49,14 +49,14 @@ public class panelManager : MonoBehaviour
 
         audioF.color = new Color(0, 1, 0.07569122f);
 
-        switchLogic.FlappyB.image.overrideSprite= switchLogic.GetSwitch(PlayerPrefs.GetInt("FlappyVol"));
-        switchLogic.iconNumF = PlayerPrefs.GetInt("FlappyVol");
+        switchLogic.FlappyB.image.overrideSprite= switchLogic.GetSwitch(PlayerPrefs.GetFloat("FlappyVol"));
+        switchLogic.iconNumF = PlayerPrefs.GetFloat("FlappyVol");
 
-        switchLogic.MusicB.image.overrideSprite = switchLogic.GetSwitch(PlayerPrefs.GetInt("MusicVol"));
-        switchLogic.iconNumM = PlayerPrefs.GetInt("MusicVol");
+        switchLogic.MusicB.image.overrideSprite = switchLogic.GetSwitch(PlayerPrefs.GetFloat("MusicVol"));
+        switchLogic.iconNumM = PlayerPrefs.GetFloat("MusicVol");
 
-        switchLogic.PointsB.image.overrideSprite = switchLogic.GetSwitch(PlayerPrefs.GetInt("PointsVol"));
-        switchLogic.iconNumP = PlayerPrefs.GetInt("PointsVol");
+        switchLogic.PointsB.image.overrideSprite = switchLogic.GetSwitch(PlayerPrefs.GetFloat("PointsVol"));
+        switchLogic.iconNumP = PlayerPrefs.GetFloat("PointsVol");
     }
     public void cycleP()
     {
