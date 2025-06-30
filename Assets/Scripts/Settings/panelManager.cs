@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class panelManager : MonoBehaviour
@@ -14,6 +15,8 @@ public class panelManager : MonoBehaviour
     public switchLogic switchLogic;
     public sceneryManager sceneryManager;
     public Image skinF, cycleF, audioF;
+    [SerializeField] Slider ostSlider;
+    [SerializeField] Slider pointsSlider;
 
     public void Start()
     {
@@ -52,11 +55,9 @@ public class panelManager : MonoBehaviour
         switchLogic.FlappyB.image.overrideSprite= switchLogic.GetSwitch(PlayerPrefs.GetFloat("FlappyVol"));
         switchLogic.iconNumF = PlayerPrefs.GetFloat("FlappyVol");
 
-        switchLogic.MusicB.image.overrideSprite = switchLogic.GetSwitch(PlayerPrefs.GetFloat("MusicVol"));
-        switchLogic.iconNumM = PlayerPrefs.GetFloat("MusicVol");
+        ostSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MusicVol"));
 
-        switchLogic.PointsB.image.overrideSprite = switchLogic.GetSwitch(PlayerPrefs.GetFloat("PointsVol"));
-        switchLogic.iconNumP = PlayerPrefs.GetFloat("PointsVol");
+        pointsSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("PointsVol"));
     }
     public void cycleP()
     {

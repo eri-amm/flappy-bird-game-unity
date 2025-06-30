@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class logics : MonoBehaviour
 {
-    public int score=0;
+    public static int score=0;
     public bool flashed;
     public sceneryManager sceneryManager;
     public MeshRenderer sky,ground;
@@ -17,14 +17,21 @@ public class logics : MonoBehaviour
     public Button pauseB;
     public Image medal,flashIMG;
     public Sprite pauseS, playS,bronze,silver,gold,plat;
-    public GameObject gameOvers,startMenu,gameplay,scoreTx,newHigh,Medal,flappy,endB, jumpB, flash;
+    public GameObject gameOvers,startMenu,countdowntext,gameplay,scoreTx,newHigh,Medal,flappy,endB, jumpB, flash,versionChecker,ostmanager,counter;
 
     void Start()
     {
+        if (!checkUpdate.isUpdated)
+        {
+            versionChecker.SetActive(true);
+            Time.timeScale = 0 ;
+            ostmanager.SetActive(false);
+        }
         point.volume = PlayerPrefs.GetFloat("PointsVol");
         Application.targetFrameRate = 120;
         flash.SetActive(false);
-        die.volume = PlayerPrefs.GetFloat("FlappyVol");
+        if(PlayerPrefs.GetFloat("FlappyVol")>0)
+            die.volume = 0.1f;
         highScore.text = Convert.ToString(PlayerPrefs.GetInt("HighScore"));
         sky.material = sceneryManager.GetSkyScenery(PlayerPrefs.GetInt("SceneryNum"));
         sky.transform.localScale = sceneryManager.getSkySize(PlayerPrefs.GetInt("SceneryNum"));
@@ -81,15 +88,30 @@ public class logics : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1;
-            pauseB.image.overrideSprite = pauseS;
-            jumpB.SetActive(true);
-            endB.SetActive(false);
+            StartCoroutine(Countdown());
         }
+    }
+
+    IEnumerator Countdown()
+    {
+        int count = 3;
+        counter.SetActive(true);
+        while (count > 0)
+        {
+            countdowntext.GetComponent<TextMeshProUGUI>().SetText((count--).ToString());
+            yield return new WaitForSecondsRealtime(1f); 
+        }
+        counter.SetActive(false);
+        Time.timeScale = 1;
+        pauseB.image.overrideSprite = pauseS;
+        jumpB.SetActive(true);
+        endB.SetActive(false);
     }
 
     public void restart()
     {
+        logics.score = 0;
+        spawner.spawn_rate = 1.37f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
     }

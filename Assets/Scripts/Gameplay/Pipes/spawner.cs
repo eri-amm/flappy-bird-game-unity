@@ -6,8 +6,7 @@ public class spawner : MonoBehaviour
 {
 
     public GameObject pipe,spawnedPipe;
-    public logics logics;
-    public float spawn_rate=5;
+    public static float spawn_rate=1.37f;
     public float score = 0;
     public flappy_behaviour status;
     public float lastY=0;
@@ -18,7 +17,6 @@ public class spawner : MonoBehaviour
     void spawn()
     {
         spawnedPipe=Instantiate(pipe, new Vector3(transform.position.x,Random.Range(lowest,highest)+lastY,0), transform.rotation);
-        
     }
     
     // Start is called before the first frame update
@@ -33,15 +31,16 @@ public class spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if ( (logics.score != 0) && (logics.score % 3 == 0) && (spawn_rate > 0.5) && !changedSpeed) 
-        //{
-        //    spawn_rate -= 0.2f;
-        //    changedSpeed = true;
-        //}
-        //if (logics.score % 3 != 0)
-        //{
-        //    changedSpeed = false;
-        //}
+        if ( (logics.score != 0) && (logics.score % 10 == 0) && (spawn_rate > 0.5f) && !changedSpeed && logics.score<100) 
+        {
+            spawn_rate -= 0.06f;
+            changedSpeed = true;
+        }
+        if (logics.score % 10 != 0)
+        {
+            changedSpeed = false;
+        }
+
         lastY = spawnedPipe.transform.position.y;
 
         if (lastY >= 1)

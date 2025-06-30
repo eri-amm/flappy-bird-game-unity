@@ -140,6 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moving_speed: 14.3
   pipe: {fileID: 3484176090044829304, guid: 59173e03eb5ccfd4a992f1d7908d56f7, type: 3}
+  logics: {fileID: 7840430299026289017, guid: 5801f69fc4280e444ad0d05ae4e6cca7, type: 3}
+  changedSpeed: 0
 --- !u!1 &1874780945808454730
 GameObject:
   m_ObjectHideFlags: 0
